@@ -258,3 +258,4 @@ RODAR O CERTBOT PARA GERAR O SSL</br>
 ```bash
 	certbot -m %SeuEmail% --nginx --agree-tos --non-interactive --domains app.seudomínio.com.br,api.seudomínio.com.br
 ```
+
