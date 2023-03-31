@@ -1,19 +1,21 @@
 INSTALAÇÃO PLATAFORMA WHATICKET SAAS COM BANCO POSTGRES
 
-----------------------------------------------------------------------------------------------------------------------
-LEGENDAS PARA SUBSTITUIÇÃO
-%Substituir% - Substituir todos os conteúdos entre % 
-%%%%%%%%% Comando %%%%%%%%% - Editar o arquivo com os dados abaixo do comando em destaque.
-app.seudomínio.com.br - Substituir com o domínio ou subdomínio do FRONTEND
-api.seudomínio.com.br - Substituir com o domínio ou subdomínio do BACKEND
-----------------------------------------------------------------------------------------------------------------------
-Obs: Sempre observar o que é para ser executado com usuario root e usuario deploy
+----------------------------------------------------------------------------------------------------------------------</br>
+LEGENDAS PARA SUBSTITUIÇÃO</br>
+%Substituir% - Substituir todos os conteúdos entre % </br>
+%%%%%%%%% Comando %%%%%%%%% - Editar o arquivo com os dados abaixo do comando em destaque.</br>
+app.seudomínio.com.br - Substituir com o domínio ou subdomínio do FRONTEND</br>
+api.seudomínio.com.br - Substituir com o domínio ou subdomínio do BACKEND</br>
+----------------------------------------------------------------------------------------------------------------------</br>
+Obs: Sempre observar o que é para ser executado com usuario root e usuario deploy</br>
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@############## Instalação com USUARIO ROOT #################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-ATUALIZAR A VPS
-sudo apt update && sudo apt -y upgrade
-
-INSTALAR O NODE E POSTGRES
+@@@@@@@@@@@@@@@@@@@@@@@@@@@############## Instalação com USUARIO ROOT #################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</br>
+ATUALIZAR A VPS</br>
+```bash
+	sudo apt update && sudo apt -y upgrade
+```
+INSTALAR O NODE E POSTGRES</br>
+```bash 
 	sudo su root
 	curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 	apt-get install -y nodejs
@@ -22,48 +24,65 @@ INSTALAR O NODE E POSTGRES
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 	sudo apt-get update -y && sudo apt-get -y install postgresql
 	sudo timedatectl set-timezone America/%SeuTimezone%
+```
 	
-INTALAR O DOCKER
+INTALAR O DOCKER</br>
+```bash	
 	apt install -y apt-transport-https ca-certificates curl software-properties-common
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 	apt install -y docker-ce
+```
+
+INSTALAR O PUPPETEER</br>
+```bash	
+	apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2   libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3  	 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6        libx11-6 	libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates  fonts-liberation 	libappindicator1 libnss3 lsb-release xdg-utils
+```
 	
-INSTALAR O PUPPETEER
-	apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2   libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3  libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6        libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates  fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
-	
-INSTALAR O PM2
+INSTALAR O PM2</br>
+```bash
 	npm install -g pm2
-	
-INSTALAR O SNAPD
+```
+
+INSTALAR O SNAPD</br>
+```bash
 	apt install -y snapd
 	snap install core
 	snap refresh core
-	
-INSTALAR O NGINX
+```
+
+INSTALAR O NGINX</br>
+```bash
 	apt install -y nginx
 	rm /etc/nginx/sites-enabled/default
 		service nginx restart
 	sudo nano /etc/nginx/nginx.conf
 		client_max_body_size 100M;
-		
-INSTALAR O CERTBOT
+```
+
+INSTALAR O CERTBOT</br>
+```bash
 	apt-get remove certbot
 	snap install --classic certbot
 	ln -s /snap/bin/certbot /usr/bin/certbot
-		
-CRIAR USUARIO DEPLOY
+```	
+	
+CRIAR USUARIO DEPLOY</br>
+```bash
 	adduser deploy
 	usermod -aG sudo deploy
-	
-CLONAR O REPOSITORIO
+```
+
+CLONAR O REPOSITORIO</br>
+```bash
 	su deploy
 	sudo apt install -y git && git clone https://github.com/%SeuRepositório%.git  /home/deploy/%instancia%
+```
 	
-	
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############--- BACKEND ---#################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############--- BACKEND ---#################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</br></br>
 
-CRIAR O REDIS E BANCO POSTGRES
+CRIAR O REDIS E BANCO POSTGRES</br>
+```bash	
 	sudo su root
 	usermod -aG docker deploy
 	docker run --name redis-%NomeRedis% -p 5000:6379 --restart always --detach redis redis-server --requirepass %SenhaRedis%
@@ -74,10 +93,13 @@ CRIAR O REDIS E BANCO POSTGRES
 	ALTER USER %Userbanco% PASSWORD '%SenhaUser%';
 	\q
 	exit
+```	
 	
-CRIAR VARIAVEL DE AMBIENTE
-	----Utilizando usuario deploy no diretótio backend----
+CRIAR VARIAVEL DE AMBIENTE</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
+```
 	%%%%%%%%% sudo nano .env %%%%%%%%%
 ------------Editar o arquivo com os dados abaixo--------------
 NODE_ENV=  
