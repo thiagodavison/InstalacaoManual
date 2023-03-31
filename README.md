@@ -1,15 +1,15 @@
 INSTALAÇÃO PLATAFORMA WHATICKET SAAS COM BANCO POSTGRES
 
-----------------------------------------------------------------------------------------------------------------------</br>
+--------------------------------------------------------------------------------------------------------</br>
 LEGENDAS PARA SUBSTITUIÇÃO</br>
 %Substituir% - Substituir todos os conteúdos entre % </br>
 %%%%%%%%% Comando %%%%%%%%% - Editar o arquivo com os dados abaixo do comando em destaque.</br>
 app.seudomínio.com.br - Substituir com o domínio ou subdomínio do FRONTEND</br>
 api.seudomínio.com.br - Substituir com o domínio ou subdomínio do BACKEND</br>
-----------------------------------------------------------------------------------------------------------------------</br>
+--------------------------------------------------------------------------------------------------------</br>
 Obs: Sempre observar o que é para ser executado com usuario root e usuario deploy</br>
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@############## Instalação com USUARIO ROOT #################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</br>
+@@@@@@@@@@@@@############## Instalação com USUARIO ROOT #################@@@@@@@@@@@@@@@@@</br>
 ATUALIZAR A VPS</br>
 ```bash
 	sudo apt update && sudo apt -y upgrade
@@ -79,7 +79,7 @@ CLONAR O REPOSITORIO</br>
 	sudo apt install -y git && git clone https://github.com/%SeuRepositório%.git  /home/deploy/%instancia%
 ```
 	
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############--- BACKEND ---#################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</br></br>
+@@@@@@@@@@@@@@@@@@@@##############--- BACKEND ---#################@@@@@@@@@@@@@@@@@@@@@@@</br></br>
 
 CRIAR O REDIS E BANCO POSTGRES</br>
 ```bash	
