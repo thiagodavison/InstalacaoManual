@@ -186,10 +186,7 @@ CONFIGURAÇÃO DO NGINX</br>
     proxy_cache_bypass \$http_upgrade;
   }
 }
-```
-
-	----Gerando link simbólico----
-	
+```	
 	
 ```bash	
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
