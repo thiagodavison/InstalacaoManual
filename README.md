@@ -9,7 +9,7 @@ api.seudomínio.com.br - Substituir com o domínio ou subdomínio do BACKEND</br
 --------------------------------------------------------------------------------------------------------</br>
 Obs: Sempre observar o que é para ser executado com usuario root e usuario deploy</br>
 
-@@@@@@@@@@@@@############## Instalação com USUARIO ROOT #################@@@@@@@@@@@@@@@@@</br>
+@@@@@@@@@@@@@############## INSTALAÇÃO COM USUARIO ROOT ##############@@@@@@@@@@@@@</br>
 ATUALIZAR A VPS</br>
 ```bash
 	sudo apt update && sudo apt -y upgrade
@@ -79,7 +79,7 @@ CLONAR O REPOSITORIO</br>
 	sudo apt install -y git && git clone https://github.com/%SeuRepositório%.git  /home/deploy/%instancia%
 ```
 	
-@@@@@@@@@@@@@@@@@@@@##############--- BACKEND ---#################@@@@@@@@@@@@@@@@@@@@@@@</br></br>
+@@@@@@@@@@@@@##############-- BACKEND --##############@@@@@@@@@@@@@</br>
 
 CRIAR O REDIS E BANCO POSTGRES</br>
 ```bash	
@@ -100,6 +100,7 @@ CRIAR VARIAVEL DE AMBIENTE</br>
 ```bash	
 	cd /home/deploy/%instancia%/backend
 ```
+```bash	
 	%%%%%%%%% sudo nano .env %%%%%%%%%
 ------------Editar o arquivo com os dados abaixo--------------</br>
 NODE_ENV=  
@@ -130,7 +131,7 @@ REDIS_OPT_LIMITER_DURATION=3000
 
 
 SKIP_PREFLIGHT_CHECK=true
-
+```
 	
 INSTALAÇÃO DAS DEPENDENCIAS</br>
 	----Utilizando usuario deploy no diretótio backend----</br>
@@ -191,7 +192,7 @@ CONFIGURAÇÃO DO NGINX</br>
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
 ```bash
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############--- FRONTEND ---#################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@#########--- FRONTEND ---############@@@@@@@@@@@@@@@@@@
 
 CRIAR VARIAVEL DE AMBIENTE
 	----Utilizando usuario deploy no diretótio frontend----
