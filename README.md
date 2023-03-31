@@ -102,7 +102,7 @@ CRIAR VARIAVEL DE AMBIENTE</br>
 ```
 ```bash	
 	%%%%%%%%% sudo nano .env %%%%%%%%%
-------------Editar o arquivo com os dados abaixo--------------</br>
+------------Editar o arquivo com os dados abaixo--------------
 NODE_ENV=  
 BACKEND_URL=https://api.seudomínio.com.br
 FRONTEND_URL=https://app.seudomínio.com.br
@@ -190,38 +190,49 @@ CONFIGURAÇÃO DO NGINX</br>
 	----Gerando link simbólicocd----</br>
 ```bash	
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
-```bash
+```
 
-@@@@@@@@@@@@@@@@@#########--- FRONTEND ---############@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@#########--- FRONTEND ---############@@@@@@@@@@@@@@@@@@</br>
 
-CRIAR VARIAVEL DE AMBIENTE
-	----Utilizando usuario deploy no diretótio frontend----
-	cd /home/deploy/%instancia%/frontend
+CRIAR VARIAVEL DE AMBIENTE</br>
+	----Utilizando usuario deploy no diretótio frontend----</br>
+```bash	
+	cd /home/deploy/%instancia%/frontend	
 	%%%%%%%%% sudo nano .env %%%%%%%%%
 		REACT_APP_BACKEND_URL=https://api.seudomínio.com.br
 		REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
+```		
 
-INSTALANDO DEPENDENCIAS DO FRONTEND
-	----Utilizando usuario deploy no diretótio frontend----
+INSTALANDO DEPENDENCIAS DO FRONTEND</br>
+	----Utilizando usuario deploy no diretótio frontend----</br>
+```bash	
 	cd /home/deploy/%instancia%/frontend
 	npm install
+```
 	
-COMPILANDO O CODIGO DO FRONTEND
-	----Utilizando usuario deploy no diretótio frontend----
+COMPILANDO O CODIGO DO FRONTEND</br>
+	----Utilizando usuario deploy no diretótio frontend----</br>
+```bash	
 	cd /home/deploy/%instancia%/frontend
 	npm run build
-	
-INICIANDO O PM2
-	----Utilizando usuario deploy no diretótio frontend----
+```
+
+INICIANDO O PM2</br>
+	----Utilizando usuario deploy no diretótio frontend----</br>
+```bash	
 	cd /home/deploy/%instancia%/frontend
 	pm2 start server.js --name %instancia%-frontend
 	pm2 save
-	----Configuração para o PM2 iniciar com o Ubuntu----
+```	
+	----Configuração para o PM2 iniciar com o Ubuntu----</br>
+```bash	
 	pm2 startup
 	sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u deploy --hp /home/deploy
-	
-CONFIGURAÇÃO DO NGINX
-	----Utilizando usuario root no diretótio etc----
+```
+
+CONFIGURAÇÃO DO NGINX</br>
+	----Utilizando usuario root no diretótio etc----</br>
+```bash
 	%%%%%%%%%    sudo nano /etc/nginx/sites-available/%instancia%-frontend    %%%%%%%%%
 	
 	server {
@@ -238,9 +249,13 @@ CONFIGURAÇÃO DO NGINX
     proxy_cache_bypass \$http_upgrade;
   }
 }
-	
-	----Gerando link simbólico----
+```	
+	----Gerando link simbólico----</br>
+```bash	
 	sudo ln -s /etc/nginx/sites-available/%instancia%-frontend /etc/nginx/sites-enabled
-	
-RODAR O CERTBOT PARA GERAR O SSL
+```
+
+RODAR O CERTBOT PARA GERAR O SSL</br>
+```bash
 	certbot -m %SeuEmail% --nginx --agree-tos --non-interactive --domains app.seudomínio.com.br,api.seudomínio.com.br
+```
