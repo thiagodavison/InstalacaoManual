@@ -101,7 +101,7 @@ CRIAR VARIAVEL DE AMBIENTE</br>
 	cd /home/deploy/%instancia%/backend
 ```
 	%%%%%%%%% sudo nano .env %%%%%%%%%
-------------Editar o arquivo com os dados abaixo--------------
+------------Editar o arquivo com os dados abaixo--------------</br>
 NODE_ENV=  
 BACKEND_URL=https://api.seudomínio.com.br
 FRONTEND_URL=https://app.seudomínio.com.br
@@ -132,35 +132,45 @@ REDIS_OPT_LIMITER_DURATION=3000
 SKIP_PREFLIGHT_CHECK=true
 
 	
-INSTALAÇÃO DAS DEPENDENCIAS
-	----Utilizando usuario deploy no diretótio backend----
+INSTALAÇÃO DAS DEPENDENCIAS</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
 	npm install
-	
-COMPILANDO O CÓDIGO DO BACKEND
-	----Utilizando usuario deploy no diretótio backend----
+```
+COMPILANDO O CÓDIGO DO BACKEND</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
 	npm run build
-	
-CRIANDO AS TABELAS NO BANCO
-	----Utilizando usuario deploy no diretótio backend----
+```
+
+CRIANDO AS TABELAS NO BANCO</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
 	npx sequelize db:migrate
+```
 
-PUPULANDO AS TABELAS DO BANCO
-	----Utilizando usuario deploy no diretótio backend----
+PUPULANDO AS TABELAS DO BANCO</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
 	npx sequelize db:seed:all
+```	
 	
-INICIANDO O SERVIÇO PM2
-	----Utilizando usuario deploy no diretótio backend----
+INICIANDO O SERVIÇO PM2</br>
+	----Utilizando usuario deploy no diretótio backend----</br>
+```bash	
 	cd /home/deploy/%instancia%/backend
 	pm2 start dist/server.js --name %instancia%-backend
+```
 
-CONFIGURAÇÃO DO NGINXsu
-	----Utilizando usuario root no diretótio etc----
+CONFIGURAÇÃO DO NGINX</br>
+	----Utilizando usuario root no diretótio etc----</br>
+```bash	
 	%%%%%%%%%    sudo nano /etc/nginx/sites-available/%instancia%-backend    %%%%%%%%% 
-	
+
 	server {
   server_name api.seudomínio.com.br;
   location / {
@@ -175,10 +185,12 @@ CONFIGURAÇÃO DO NGINXsu
     proxy_cache_bypass \$http_upgrade;
   }
 }
-
-	----Gerando link simbólicocd----
+```
+	----Gerando link simbólicocd----</br>
+```bash	
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
-	
+```bash
+
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############--- FRONTEND ---#################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 CRIAR VARIAVEL DE AMBIENTE
