@@ -56,7 +56,7 @@ INSTALAR O NGINX</br>
 	apt install -y nginx
 	rm /etc/nginx/sites-enabled/default
 		service nginx restart
-	sudo nano /etc/nginx/nginx.conf
+	%%%%%%%%%    sudo nano /etc/nginx/nginx.conf    %%%%%%%%%
 		client_max_body_size 100M;
 ```
 
