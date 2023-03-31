@@ -10,11 +10,11 @@ api.seudomínio.com.br - Substituir com o domínio ou subdomínio do BACKEND</br
 Obs: Sempre observar o que é para ser executado com usuario root e usuario deploy</br>
 
 @@@@@@@@@@@@@############## INSTALAÇÃO COM USUARIO ROOT ##############@@@@@@@@@@@@@</br>
-ATUALIZAR A VPS</br>
+ATUALIZAR A VPS
 ```bash
 	sudo apt update && sudo apt -y upgrade
 ```
-INSTALAR O NODE E POSTGRES</br>
+INSTALAR O NODE E POSTGRES
 ```bash 
 	sudo su root
 	curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -26,25 +26,24 @@ INSTALAR O NODE E POSTGRES</br>
 	sudo timedatectl set-timezone America/%SeuTimezone%
 ```
 	
-INTALAR O DOCKER</br>
+INTALAR O DOCKER
 ```bash	
 	apt install -y apt-transport-https ca-certificates curl software-properties-common
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 	apt install -y docker-ce
 ```
-
-INSTALAR O PUPPETEER</br>
+INSTALAR O PUPPETEER
 ```bash	
 	apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2   libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3  	 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6        libx11-6 	libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates  fonts-liberation 	libappindicator1 libnss3 lsb-release xdg-utils
 ```
 	
-INSTALAR O PM2</br>
+INSTALAR O PM2
 ```bash
 	npm install -g pm2
 ```
 
-INSTALAR O SNAPD</br>
+INSTALAR O SNAPD
 ```bash
 	apt install -y snapd
 	snap install core
@@ -192,7 +191,7 @@ CONFIGURAÇÃO DO NGINX</br>
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
 ```
 
-@@@@@@@@@@@@@@@@@#########--- FRONTEND ---############@@@@@@@@@@@@@@@@@@</br>
+@@@@@@@@@@@@#######--- FRONTEND ---########@@@@@@@@@@</br>
 
 CRIAR VARIAVEL DE AMBIENTE</br>
 	----Utilizando usuario deploy no diretótio frontend----</br>
