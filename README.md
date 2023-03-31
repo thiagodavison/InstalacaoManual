@@ -189,6 +189,7 @@ CONFIGURAÇÃO DO NGINX</br>
 ```	
 	
 ```bash	
+	----Gerando link simbólico----
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
 ```
 
@@ -250,8 +251,9 @@ CONFIGURAÇÃO DO NGINX</br>
   }
 }
 ```	
-	----Gerando link simbólico----</br>
+	
 ```bash	
+	----Gerando link simbólico----
 	sudo ln -s /etc/nginx/sites-available/%instancia%-frontend /etc/nginx/sites-enabled
 ```
 
