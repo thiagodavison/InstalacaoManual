@@ -187,6 +187,7 @@ CONFIGURAÇÃO DO NGINX</br>
 }
 ```
 	----Gerando link simbólicocd----</br>
+	
 ```bash	
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
 ```
