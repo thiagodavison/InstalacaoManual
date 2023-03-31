@@ -130,6 +130,7 @@ REDIS_OPT_LIMITER_DURATION=3000
 
 
 SKIP_PREFLIGHT_CHECK=true
+
 ```
 	
 INSTALAÇÃO DAS DEPENDENCIAS</br>
@@ -186,7 +187,9 @@ CONFIGURAÇÃO DO NGINX</br>
   }
 }
 ```
-	----Gerando link simbólicocd----
+
+	----Gerando link simbólico----
+	
 	
 ```bash	
 	ln -s /etc/nginx/sites-available/%instancia%-backend /etc/nginx/sites-enabled
